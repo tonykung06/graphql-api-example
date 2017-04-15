@@ -1,0 +1,77 @@
+query myQuery {
+  me(key: "4242") {
+    email
+    id
+    fullName
+    firstName
+    lastName
+    createdAt
+    contests {
+      id
+      description
+      title
+      status
+      createdAt
+      names {
+        label
+        createdBy {
+          fullName
+        }
+        totalVotes {
+          up
+          down
+        }
+      }
+    }
+    contestsCount
+    namesCount
+    votesCount
+    activities {
+      ... on MyContestType {
+        titleAlias: title
+      }
+      ... on NameType {
+        label
+      }
+    }
+  }
+}
+
+mutation myAddContest($input: ContestInputType!) {
+  AddContest(input: $input) {
+    id
+    code
+    title
+    description
+    status
+  }
+}
+
+{
+  "input": {
+    "apiKey": "0000",
+    "title": "my new contest 1",
+    "description": "testing adding new contest"
+  }
+}
+
+mutation MyProposeName($input: NameInputType!) {
+  AddName(input: $input) {
+    id
+    label
+    description
+    totalVotes {
+      up
+      down
+    }
+  }
+}
+
+{
+  "input": {
+    "apiKey": "0000",
+    "contestId": "6",
+    "label": "fancy name for contest 6",
+    "description": "testing proposing a name to a contest"
+  }
+}
