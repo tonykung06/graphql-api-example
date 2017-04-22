@@ -5,6 +5,7 @@
   "author": "Tony Kung",
   "license": "ISC",
   "scripts": {
+    "start-dev": "cross-env NODE_ENV=development cross-env PORT=8080 node lib/index",
     "start": "node lib/index"
   },
   "repository": {
@@ -23,12 +24,14 @@
     "express": "^4.15.2",
     "express-graphql": "^0.6.4",
     "graphql": "^0.9.3",
+    "graphqlhub-schemas": "^0.1.0",
     "humps": "^2.0.0",
     "lodash": "^4.17.4",
     "mongodb": "^2.1.18",
     "pg": "^6.0.1"
   },
   "devDependencies": {
+    "cross-env": "^4.0.0",
     "nodemon": "^1.9.2"
   }
 }
